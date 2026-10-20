@@ -200,8 +200,7 @@ Each class script performs a single step. Your script combines these steps into 
         ```python
         try:
             response = requests.get(url, timeout=30)
-            response.raise_for_status()  # raise an error for 404 etc.
-            # save response.content to the file
+            response.raise_for_status()
         except requests.RequestException as e:
             log.error(f"Error downloading {url}: {e}")
         ```
