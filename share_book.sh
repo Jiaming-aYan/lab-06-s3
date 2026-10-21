@@ -18,7 +18,7 @@ fi
 
 # Download the book.
 mkdir -p books
-curl -fL "$BOOK_URL" -o "books/$FILENAME"
+curl -fL --retry 3 --retry-all-errors --retry-delay 1 --max-time 30 "$BOOK_URL" -o "books/$FILENAME"
 
 # Create a private bucket if needed.
 if ! aws s3 ls "s3://$BUCKET" > /dev/null 2>&1; then
